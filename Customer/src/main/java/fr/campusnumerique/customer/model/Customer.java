@@ -13,20 +13,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int id;
-    String immatriculation;
-    String brand;
-    String model;
-    String color;
-    int fiscal_hp;
-    Date date_pickup;
-    int odometer_pickup;
-    Date date_return;
-    int odometer_return;
-    float cleaning_cost;
-    float mileage_cost;
-    String type;
-    int displacement;
-    int load_volume;
-
+    String first_name;
+    String last_name;
+    Date birthdate;
+    String license_id;
+    Date license_date;
 
 }
