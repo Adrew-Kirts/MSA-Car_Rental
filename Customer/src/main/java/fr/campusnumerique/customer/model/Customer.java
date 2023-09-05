@@ -17,6 +17,6 @@ public class Customer {
     String last_name;
     Date birthdate;
     String license_id;
-//    Date license_date;
+    Date license_date;
 
 }
