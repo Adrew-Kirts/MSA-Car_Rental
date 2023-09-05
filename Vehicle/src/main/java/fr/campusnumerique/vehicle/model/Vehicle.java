@@ -19,9 +19,9 @@ public class Vehicle {
     String model;
     String color;
     int fiscalHp;
-    Date datePickup;
+    LocalDate datePickup;
     int odometerPickup;
-    Date dateReturn;
+    LocalDate dateReturn;
     int odometerReturn;
     float cleaningCost;
     float mileageCost;

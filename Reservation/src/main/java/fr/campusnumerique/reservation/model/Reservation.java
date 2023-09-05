@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -14,8 +15,8 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int id;
-    Date rentalStart;
-    Date rentalEnd;
+    LocalDate rentalStart;
+    LocalDate rentalEnd;
     int mileageEstimation;
 
 }
