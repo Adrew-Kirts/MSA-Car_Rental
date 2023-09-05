@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -15,8 +16,8 @@ public class Customer {
     int id;
     String firstName;
     String lastName;
-    Date birthdate;
+    LocalDate birthdate;
     String licenseId;
-    Date licenseDate;
+    LocalDate licenseDate;
 
 }

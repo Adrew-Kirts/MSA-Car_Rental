@@ -10,17 +10,15 @@ import java.util.Date;
 
 public class Validator {
 
-    public static int calculateAge(Date birthdate){
+    public static int calculateAge(LocalDate birthdate){
         LocalDate currentDate = LocalDate.now();
-        LocalDate dateOfBirth = LocalDate.from(birthdate.toInstant());
 
-        int currentAge = Period.between(dateOfBirth, currentDate).getYears();
+        int currentAge = Period.between(birthdate, currentDate).getYears();
 
         if (currentAge < 18){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
         }
-
         return currentAge;
     }
 
