@@ -9,47 +9,68 @@ public class Maintenance {
         return Period.between(lastMaintenanceDate,LocalDate.now()).getDays();
     }
 
-    public boolean motorcycleChainMaintenanceNeeded(int odometer,int lastChainMaintenanceOdometer , LocalDate lastChainMaintenaceDate){
-        int chainMaintenanceOld = odometer - lastChainMaintenanceOdometer;
-        return lastMaintenanceOld(lastChainMaintenaceDate) >= 365 || chainMaintenanceOld >= 1000;
+    public boolean motorcycleChainMaintenanceNeeded(Vehicle vehicle){
+        int chainMaintenanceOld = vehicle.getOdometerReturn() - vehicle.getLastChainMaintenanceOdometer();
+        if(lastMaintenanceOld(vehicle.getLastChainMaintenanceDate()) >= 365 || chainMaintenanceOld >= 1000){
+            vehicle.setLastChainMaintenanceDate(LocalDate.now());
+            vehicle.setLastChainMaintenanceOdometer(vehicle.getOdometerReturn());
+            return true;
+        }
+        return false;
     }
 
-    public boolean motorcycleBrakeFluidMaintenanceNeeded (LocalDate lastBrakeFluidMaintenanceDate){
-        return lastMaintenanceOld(lastBrakeFluidMaintenanceDate) >= 365;
+    public boolean motorcycleBrakeFluidMaintenanceNeeded(Vehicle vehicle){
+        if(lastMaintenanceOld(vehicle.getLastBrakeFluidMaintenanceDate()) >= 365 ){
+            vehicle.setLastBrakeFluidMaintenanceDate(LocalDate.now());
+            return true;
+        }
+        return false;
     }
 
-    public boolean vehicleTimingBeltMaintenanceNeeded(int odometer, int lastTimingBeltMaintenanceOdometer){
-        int timingBeltMaintenanceOld = odometer - lastTimingBeltMaintenanceOdometer;
-        return timingBeltMaintenanceOld >= 100000;
+    public boolean vehicleTimingBeltMaintenanceNeeded(Vehicle vehicle){
+        int timingBeltMaintenanceOld = vehicle.getOdometerReturn() - vehicle.getLastTimingBeltMaintenanceOdometer();
+        if(timingBeltMaintenanceOld >= 100000){
+            vehicle.setLastTimingBeltMaintenanceOdometer(vehicle.getOdometerReturn());
+            return true;
+        }
+        return false;
     }
 
-    public boolean vehicleTireMaintenanceNeeded(LocalDate lastTireMaintenanceDate){
-        return lastMaintenanceOld(lastTireMaintenanceDate) >= 365;
+    public boolean vehicleTireMaintenanceNeeded(Vehicle vehicle){
+        if(lastMaintenanceOld(vehicle.getLastTireMaintenanceDate()) >= 365){
+            vehicle.setLastTireMaintenanceDate(LocalDate.now());
+            return true;
+        }
+        return false;
     }
 
-    public boolean utilitySuspensionMaintenanceNeeded(LocalDate lastSuspensionMaintenanceDate){
-        return lastMaintenanceOld(lastSuspensionMaintenanceDate) >= 730;
+    public boolean utilitySuspensionMaintenanceNeeded(Vehicle vehicle){
+        if (lastMaintenanceOld(vehicle.getLastSuspensionMaintenanceDate()) >= 730){
+            vehicle.setLastSuspensionMaintenanceDate(LocalDate.now());
+            return true;
+        }
+        return false;
     }
 
     public int motorcycleMaintenanceControl(Vehicle vehicle){
-        if (motorcycleBrakeFluidMaintenanceNeeded(vehicle.getLastBrakeFluidMaintenanceDate()) || motorcycleChainMaintenanceNeeded(vehicle.getOdometerReturn(),vehicle.getLastChainMaintenanceOdometer(),vehicle.getLastChainMaintenanceDate())){
+        if (motorcycleBrakeFluidMaintenanceNeeded(vehicle) || motorcycleChainMaintenanceNeeded(vehicle)){
             return 1;
         }
         return 0;
     }
 
     public int vehicleMaintenanceControl(Vehicle vehicle){
-        if(vehicleTimingBeltMaintenanceNeeded(vehicle.getOdometerReturn(),vehicle.getLastTimingBeltMaintenanceOdometer())){
+        if(vehicleTimingBeltMaintenanceNeeded(vehicle)){
             return 3;
         }
-        if(vehicleTireMaintenanceNeeded(vehicle.getLastTireMaintenanceDate())){
+        if(vehicleTireMaintenanceNeeded(vehicle)){
             return 1;
         }
         return 0;
     }
 
     public int utilityMaintenanceControl(Vehicle vehicle){
-        if(utilitySuspensionMaintenanceNeeded(vehicle.getLastSuspensionMaintenanceDate())){
+        if(utilitySuspensionMaintenanceNeeded(vehicle)){
             return 2;
         }
         return 0;
