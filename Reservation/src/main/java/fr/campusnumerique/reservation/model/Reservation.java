@@ -14,8 +14,8 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int id;
-    Date rental_start;
-    Date rental_end;
-    int mileage_estimation;
+    Date rentalStart;
+    Date rentalEnd;
+    int mileageEstimation;
 
 }

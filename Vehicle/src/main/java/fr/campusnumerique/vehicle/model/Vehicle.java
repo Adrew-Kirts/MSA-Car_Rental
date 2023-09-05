@@ -17,16 +17,16 @@ public class Vehicle {
     String brand;
     String model;
     String color;
-    int fiscal_hp;
-    Date date_pickup;
-    int odometer_pickup;
-    Date date_return;
-    int odometer_return;
-    float cleaning_cost;
-    float mileage_cost;
+    int fiscalHp;
+    Date datePickup;
+    int odometerPickup;
+    Date dateReturn;
+    int odometerReturn;
+    float cleaningCost;
+    float mileageCost;
     String type;
     int displacement;
-    int load_volume;
+    int loadVolume;
 
 
 }
