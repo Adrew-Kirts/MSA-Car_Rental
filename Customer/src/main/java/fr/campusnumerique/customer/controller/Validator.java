@@ -14,7 +14,14 @@ public class Validator {
         LocalDate currentDate = LocalDate.now();
         LocalDate dateOfBirth = LocalDate.from(birthdate.toInstant());
 
-        return Period.between(dateOfBirth, currentDate).getYears();
+        int currentAge = Period.between(dateOfBirth, currentDate).getYears();
+
+        if (currentAge < 18){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
+        }
+
+        return currentAge;
     }
 
     public static void licenseValidator(String license_id){

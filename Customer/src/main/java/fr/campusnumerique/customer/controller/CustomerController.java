@@ -29,10 +29,6 @@ public class CustomerController {
     @PostMapping
     public Optional<Customer> addCustomers(@RequestBody Customer customer){
         Validator.licenseValidator(customer.getLicense_id());
-        if (Validator.calculateAge(customer.getBirthdate()) < 18){
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
-        }
         Customer customerAdded = customerRepository.save(customer);
         return Optional.of(customerAdded);
     }
