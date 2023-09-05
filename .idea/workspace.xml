@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f62ab-a9f5-4c00-a17a-e92ff654cfaf" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/Reservation/src/main/java/fr/campusnumerique/reservation/model/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Reservation/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Reservation/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,11 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="TaskManager">
     <servers />
   </component>

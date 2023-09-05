@@ -29,6 +29,7 @@ public class CustomerController {
     @PostMapping
     public Optional<Customer> addCustomers(@RequestBody Customer customer){
         Validator.licenseValidator(customer.getLicense_id());
+        Validator.calculateAge(customer.getBirthdate());
         Customer customerAdded = customerRepository.save(customer);
         return Optional.of(customerAdded);
     }
