@@ -1,9 +1,10 @@
 package fr.campusnumerique.vehicle.controller;
 
 import fr.campusnumerique.vehicle.model.Vehicle;
-import fr.campusnumerique.vehicle.model.Maintenance;
+import fr.campusnumerique.vehicle.model.MaintenanceTicket;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.List;
 
 public class MaintenanceController {
 
@@ -54,43 +55,41 @@ public class MaintenanceController {
         return false;
     }
 
-    public Maintenance motorcycleMaintenanceControl(Vehicle vehicle){
+    public void motorcycleMaintenanceControl(Vehicle vehicle){
         if (motorcycleBrakeFluidMaintenanceNeeded(vehicle)){
-            return new Maintenance("changement de liquide de frein",1);
+            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changement de liquide de frein",1));
         }
         if (motorcycleChainMaintenanceNeeded(vehicle)){
-            return new Maintenance("retendre la chaîne",1);
+            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("retendre la chaîne",1));
         }
-        return null;
     }
 
-    public Maintenance vehicleMaintenanceControl(Vehicle vehicle){
+    public void vehicleMaintenanceControl(Vehicle vehicle){
         if(vehicleTimingBeltMaintenanceNeeded(vehicle)){
-            return new Maintenance("changer la courroie de distribution",3);
+            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer la courroie de distribution",3));
         }
         if(vehicleTireMaintenanceNeeded(vehicle)){
-            return new Maintenance("changer les pneus",1);
+            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer les pneus",1));
         }
-        return null;
     }
 
-    public Maintenance utilityMaintenanceControl(Vehicle vehicle){
+    public void utilityMaintenanceControl(Vehicle vehicle){
         if(utilitySuspensionMaintenanceNeeded(vehicle)){
-            return new Maintenance("changer les suspensions",2);
+            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer les suspensions",2));
         }
-        return null;
     }
 
-    public Maintenance vehicleControl(Vehicle vehicle){
+    public List<MaintenanceTicket> vehicleControl(Vehicle vehicle){
         if(vehicle.getType().equals("motorcycle")){
-            return motorcycleMaintenanceControl(vehicle);
+            motorcycleMaintenanceControl(vehicle);
         }
         if(vehicle.getType().equals("car")){
-            return vehicleMaintenanceControl(vehicle);
+            vehicleMaintenanceControl(vehicle);
         }
         if(vehicle.getType().equals("utility")){
-            return vehicleMaintenanceControl(vehicle) + utilityMaintenanceControl(vehicle);
+            vehicleMaintenanceControl(vehicle);
+            utilityMaintenanceControl(vehicle);
         }
-        return null;
+        return vehicle.getMaintenanceTicket();
     }
 }

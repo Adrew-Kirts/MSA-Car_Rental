@@ -1,12 +1,10 @@
 package fr.campusnumerique.vehicle.model;
 
 import lombok.Data;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 
 @Data
 @Entity
@@ -34,5 +32,11 @@ public class Vehicle {
     int lastChainMaintenanceOdometer;
     LocalDate lastChainMaintenanceDate;
     LocalDate lastSuspensionMaintenanceDate;
+    @OneToMany
+    ArrayList<MaintenanceTicket> maintenanceTicket;
+    public Vehicle() {
+        maintenanceTicket = new ArrayList<>();
+    }
+
 
 }
