@@ -13,10 +13,10 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     int id;
-    String first_name;
-    String last_name;
+    String firstName;
+    String lastName;
     Date birthdate;
-    String license_id;
-    Date license_date;
+    String licenseId;
+    Date licenseDate;
 
 }
