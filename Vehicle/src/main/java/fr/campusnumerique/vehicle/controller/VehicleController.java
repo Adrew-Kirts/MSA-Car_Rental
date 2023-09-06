@@ -3,11 +3,9 @@ package fr.campusnumerique.vehicle.controller;
 import fr.campusnumerique.vehicle.dao.VehicleRepository;
 import fr.campusnumerique.vehicle.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
