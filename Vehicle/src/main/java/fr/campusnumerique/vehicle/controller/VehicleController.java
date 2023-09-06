@@ -3,8 +3,10 @@ package fr.campusnumerique.vehicle.controller;
 import fr.campusnumerique.vehicle.dao.VehicleRepository;
 import fr.campusnumerique.vehicle.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -41,9 +43,15 @@ public class VehicleController {
     }
 
 //Check which vehicles are available
+    //tricky style
+//    @GetMapping(value="available/{startDate},{endDate}")
+//    public Collection<Vehicle> isAvailable(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+//        return vehicleRepository.findAvailability(startDate,endDate);
+//    }
+
     @GetMapping(value="available")
-    public Collection<Vehicle> isAvailable(){
-        return vehicleRepository.findAvailability();
+    public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+        return vehicleRepository.findAvailability(startDate,endDate);
     }
 
 

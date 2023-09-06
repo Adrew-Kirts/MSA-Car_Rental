@@ -79,6 +79,7 @@ public class MaintenanceController {
         }
     }
 
+// return a list of maintenance ticket from vehicle.
     public List<MaintenanceTicket> vehicleControl(Vehicle vehicle){
         if(vehicle.getType().equals("motorcycle")){
             motorcycleMaintenanceControl(vehicle);

@@ -18,5 +18,6 @@ public class Reservation {
     LocalDate rentalStart;
     LocalDate rentalEnd;
     int mileageEstimation;
-
+    int vehicleId;
+    int customerId;
 }
