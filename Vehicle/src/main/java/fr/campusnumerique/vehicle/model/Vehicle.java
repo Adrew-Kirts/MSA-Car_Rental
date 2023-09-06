@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -33,7 +34,7 @@ public class Vehicle {
     LocalDate lastChainMaintenanceDate;
     LocalDate lastSuspensionMaintenanceDate;
     @OneToMany
-    ArrayList<MaintenanceTicket> maintenanceTicket;
+    List<MaintenanceTicket> maintenanceTicket;
     public Vehicle() {
         maintenanceTicket = new ArrayList<>();
     }
