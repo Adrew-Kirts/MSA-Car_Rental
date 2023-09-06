@@ -18,21 +18,27 @@ public class Vehicle {
     String model;
     String color;
     int fiscalHp;
+
     LocalDate datePickup;
     int odometerPickup;
     LocalDate dateReturn;
     int odometerReturn;
+
+    float reservationPrice;
     float cleaningCost;
     float mileageCost;
+
     String type;
     int displacement;
     int loadVolume;
+
     LocalDate lastBrakeFluidMaintenanceDate;
     LocalDate lastTireMaintenanceDate;
     int lastTimingBeltMaintenanceOdometer;
     int lastChainMaintenanceOdometer;
     LocalDate lastChainMaintenanceDate;
     LocalDate lastSuspensionMaintenanceDate;
+
     @OneToMany
     List<MaintenanceTicket> maintenanceTicket;
     public Vehicle() {
