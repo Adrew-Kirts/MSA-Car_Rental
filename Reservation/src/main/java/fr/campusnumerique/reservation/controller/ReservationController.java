@@ -59,4 +59,18 @@ public class ReservationController {
         reservationRepository.deleteById(id);
     }
 
+    @PutMapping
+    public Reservation vehicleReturn(Reservation reservation, int odometerReturn){
+        //ajuster le tarif / calculer le prix differenciel
+        RestTemplate vehicleRestTemplate = new RestTemplate();
+        Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+        double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometerPickup()-reservation.getMileageEstimation());
+
+//        actualiser la bagnole (odometer)
+//                if (controle maintenance) => programmer maintenance
+        vehicle.setOdometerPickup(odometerReturn);
+                //maintenace + update?
+
+        return reservationRepository.save(reservation);
+    }
 }
