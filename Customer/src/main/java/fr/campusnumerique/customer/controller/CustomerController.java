@@ -6,6 +6,8 @@ import fr.campusnumerique.customer.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -42,6 +44,11 @@ public class CustomerController {
         customerRepository.deleteById(id);
     }
 
+    //Get reserved vehicle ID's for a specific client
+    @GetMapping(value="/getReservations/{id}")
+    public List getReservations(@PathVariable int id){
+        return customerRepository.findReservedVehicles(id);
+    }
 
 
 }
