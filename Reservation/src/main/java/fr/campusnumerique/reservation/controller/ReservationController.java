@@ -33,7 +33,7 @@ public class ReservationController {
     @PostMapping
     public Optional<Reservation> addReservations(@RequestBody Reservation reservation) {
         RestTemplate customerRestTemplate = new RestTemplate();
-        Customer customer = customerRestTemplate.getForObject("http://192.168.1.239:8085/Customers/" + reservation.getCustomerId(), Customer.class);
+        Customer customer = customerRestTemplate.getForObject("http://192.168.1.239:8085/customers/" + reservation.getCustomerId(), Customer.class);
         RestTemplate vehicleRestTemplate = new RestTemplate();
         Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
         if (Validator.calculateAge(customer.getBirthdate()) < 21 && vehicle.getFiscalHp() > 8) {
@@ -43,8 +43,8 @@ public class ReservationController {
         } else if (Validator.calculateAge(customer.getBirthdate()) < 25 && vehicle.getFiscalHp() > 13) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "too much power!!!");
-
         }
+        reservation.setPrice(PriceController.calculatePrice(vehicle,reservation));
         Reservation reservationAdded = reservationRepository.save(reservation);
         return Optional.of(reservationAdded);
     }
