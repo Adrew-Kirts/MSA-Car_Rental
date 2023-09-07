@@ -27,18 +27,19 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public Optional<Vehicle> getVehicleById(@PathVariable int id){ return vehicleRepository.findById(id); }
+    public Optional<Vehicle> getVehicleById(@PathVariable int id){
+        return vehicleRepository.findById(id); }
 
-    @GetMapping("/")
-    public @ResponseBody Iterable<Vehicle> getAllVehiclesByAttribute(@RequestParam(required = false,value = "brand") String brand,
-                                                                     @RequestParam(required = false,value = "color") String color,
-                                                                     @RequestParam(required = false,value = "model") String model,
-                                                                     @RequestParam(required = false,value = "type") String type,
-                                                                     @RequestParam(required = false,value = "loadVolume") int loadVolume,
-                                                                     @RequestParam(required = false,value = "displacement") int displacement){
-
-        return vehicleRepository.findAllByAttribute(brand,color,model,type,loadVolume,displacement);
-    }
+//    @GetMapping("/")
+//    public @ResponseBody Iterable<Vehicle> getAllVehiclesByAttribute(@RequestParam(required = false,value = "brand") String brand,
+//                                                                     @RequestParam(required = false,value = "color") String color,
+//                                                                     @RequestParam(required = false,value = "model") String model,
+//                                                                     @RequestParam(required = false,value = "type") String type,
+//                                                                     @RequestParam(required = false,value = "loadVolume") int loadVolume,
+//                                                                     @RequestParam(required = false,value = "displacement") int displacement){
+//
+//        return vehicleRepository.findAllByAttribute(brand,color,model,type,loadVolume,displacement);
+//    }
 
     @PostMapping
     public Optional<Vehicle> addVehicles(@RequestBody Vehicle vehicle){

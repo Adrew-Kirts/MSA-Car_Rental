@@ -19,4 +19,5 @@ public class Reservation {
     int mileageEstimation;
     int vehicleId;
     int customerId;
+
 }
