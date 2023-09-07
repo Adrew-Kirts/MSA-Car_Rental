@@ -18,6 +18,11 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Integer>{
     @Query(value = "SELECT * FROM vehicle v WHERE v.id NOT IN (SELECT vehicle_id FROM reservation r WHERE r.rental_end > :startDate AND r.rental_start < :endDate )", nativeQuery = true)
     Collection<Vehicle> findAvailability(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
+    @Query(value = "SELECT * FROM vehicle v WHERE v.brand = :brand AND v.color = :color AND v.model = :model AND v.type = :type AND v.load_volume = :loadVolume AND v.displacement = :displacement", nativeQuery = true)
+    Collection<Vehicle> findAllByAttribute(@Param("brand") String brand, @Param("color") String color,@Param("model") String model,@Param("type") String type,@Param("loadVolume")int loadVolume,@Param("displacement") int displacement);
+
+//    @Query(value = "SELECT * FROM vehicle", nativeQuery = true)
+//    Collection<Vehicle> findAvailability();
 //    Collection<Vehicle> findByBrand(String brand);
 //
 //    Collection<Vehicle> findByType(String type);
@@ -32,7 +37,5 @@ public interface VehicleRepository extends JpaRepository<Vehicle, Integer>{
 
 //    Collection<Vehicle> findByType(String type);
 }
-
-
 
 

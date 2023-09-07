@@ -25,8 +25,7 @@ public class Validator {
 
         if (!restTemplate.getForObject("http://localhost:8088/licenses/"+license_id, Boolean.class)){
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "License number not found"
-            );
+                    HttpStatus.BAD_REQUEST, "License number not found");
         }
     }
 

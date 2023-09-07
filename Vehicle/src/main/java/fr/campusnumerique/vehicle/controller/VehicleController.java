@@ -1,5 +1,6 @@
 package fr.campusnumerique.vehicle.controller;
 
+import com.sun.istack.NotNull;
 import fr.campusnumerique.vehicle.dao.VehicleRepository;
 import fr.campusnumerique.vehicle.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,17 @@ public class VehicleController {
     @GetMapping("/{id}")
     public Optional<Vehicle> getVehicleById(@PathVariable int id){ return vehicleRepository.findById(id); }
 
+    @GetMapping("/")
+    public @ResponseBody Iterable<Vehicle> getAllVehiclesByAttribute(@RequestParam(required = false,value = "brand") String brand,
+                                                                     @RequestParam(required = false,value = "color") String color,
+                                                                     @RequestParam(required = false,value = "model") String model,
+                                                                     @RequestParam(required = false,value = "type") String type,
+                                                                     @RequestParam(required = false,value = "loadVolume") int loadVolume,
+                                                                     @RequestParam(required = false,value = "displacement") int displacement){
+
+        return vehicleRepository.findAllByAttribute(brand,color,model,type,loadVolume,displacement);
+    }
+
     @PostMapping
     public Optional<Vehicle> addVehicles(@RequestBody Vehicle vehicle){
         Vehicle vehicleAdded = vehicleRepository.save(vehicle);
@@ -52,7 +64,7 @@ public class VehicleController {
 //    }
 
     @GetMapping(value="available")
-    public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+    public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
         return vehicleRepository.findAvailability(startDate,endDate);
     }
 
@@ -93,7 +105,6 @@ public class VehicleController {
         }
         return filteredVehicles;
     }
-
 
 
 
