@@ -4,7 +4,9 @@ package fr.campusnumerique.customer.controller;
 import fr.campusnumerique.customer.dao.CustomerRepository;
 import fr.campusnumerique.customer.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Collection;
 import java.util.List;
@@ -29,7 +31,10 @@ public class CustomerController {
     @PostMapping
     public Optional<Customer> addCustomers(@RequestBody Customer customer){
         Validator.licenseValidator(customer.getLicenseId());
-        Validator.calculateAge(customer.getBirthdate());
+        if(!Validator.isMajor(customer.getBirthdate())){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
+        }
         Customer customerAdded = customerRepository.save(customer);
         return Optional.of(customerAdded);
     }

@@ -9,16 +9,15 @@ import java.time.Period;
 
 public class Validator {
 
-    public static int calculateAge(LocalDate birthdate){
+    public static boolean isMajor(LocalDate birthdate){
         LocalDate currentDate = LocalDate.now();
 
         int currentAge = Period.between(birthdate, currentDate).getYears();
 
         if (currentAge < 18){
-            throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
+            return false;
         }
-        return currentAge;
+        return true;
     }
 
     public static void licenseValidator(String license_id){
