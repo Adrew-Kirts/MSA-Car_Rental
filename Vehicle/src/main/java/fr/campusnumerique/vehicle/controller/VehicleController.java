@@ -7,7 +7,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -53,6 +55,47 @@ public class VehicleController {
     public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
         return vehicleRepository.findAvailability(startDate,endDate);
     }
+
+
+    //Possibility to search for multiple attributes
+    //URL to use: http://localhost:8086/vehicles/?brand=Honda&type=car
+    //add to url with &fiscalHp=13&color=red etc
+
+    @GetMapping("/")
+    public Collection<Vehicle> findByAttributes(
+            @RequestParam(name = "brand", required = false) String brand,
+            @RequestParam(name = "type", required = false) String type,
+            @RequestParam(name = "color", required = false) String color,
+            @RequestParam(name = "fiscalHp", required = false) Integer fiscalHp) {
+
+        // Initializes a list to store vehicle to return
+        List<Vehicle> filteredVehicles = new ArrayList<>();
+
+        // Check each filter and add vehicles that match specified criteria
+        for (Vehicle vehicle : vehicleRepository.findAll()) {
+            boolean matchesAllCriteria = true;
+
+            if (brand != null && !brand.equals(vehicle.getBrand())) {
+                matchesAllCriteria = false;
+            }
+            if (type != null && !type.equals(vehicle.getType())) {
+                matchesAllCriteria = false;
+            }
+            if (color != null && !color.equals(vehicle.getColor())) {
+                matchesAllCriteria = false;
+            }
+            if (fiscalHp != null && fiscalHp != vehicle.getFiscalHp()) {
+                matchesAllCriteria = false;
+            }
+            if (matchesAllCriteria) {
+                filteredVehicles.add(vehicle);
+            }
+        }
+        return filteredVehicles;
+    }
+
+
+
 
 
 }
