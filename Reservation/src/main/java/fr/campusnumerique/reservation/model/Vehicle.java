@@ -2,10 +2,7 @@ package fr.campusnumerique.reservation.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Data
 public class Vehicle {
@@ -17,9 +14,9 @@ public class Vehicle {
     int fiscalHp;
 
     LocalDate datePickup;
-    int odometerPickup;
+    int odometer;
     LocalDate dateReturn;
-    int odometerReturn;
+
 
     float reservationPrice;
     float cleaningCost;
