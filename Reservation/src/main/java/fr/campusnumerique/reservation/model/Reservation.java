@@ -20,5 +20,5 @@ public class Reservation {
     int vehicleId;
     int customerId;
     double price;
-
+    double priceSurplus;
 }
