@@ -13,10 +13,10 @@ public class MaintenanceController {
     }
 
     public boolean motorcycleChainMaintenanceNeeded(Vehicle vehicle){
-        int chainMaintenanceOld = vehicle.getOdometerReturn() - vehicle.getLastChainMaintenanceOdometer();
+        int chainMaintenanceOld = vehicle.getOdometer() - vehicle.getLastChainMaintenanceOdometer();
         if(lastMaintenanceOld(vehicle.getLastChainMaintenanceDate()) >= 365 || chainMaintenanceOld >= 1000){
             vehicle.setLastChainMaintenanceDate(LocalDate.now());
-            vehicle.setLastChainMaintenanceOdometer(vehicle.getOdometerReturn());
+            vehicle.setLastChainMaintenanceOdometer(vehicle.getOdometer());
             return true;
         }
         return false;
@@ -31,9 +31,9 @@ public class MaintenanceController {
     }
 
     public boolean vehicleTimingBeltMaintenanceNeeded(Vehicle vehicle){
-        int timingBeltMaintenanceOld = vehicle.getOdometerReturn() - vehicle.getLastTimingBeltMaintenanceOdometer();
+        int timingBeltMaintenanceOld = vehicle.getOdometer() - vehicle.getLastTimingBeltMaintenanceOdometer();
         if(timingBeltMaintenanceOld >= 100000){
-            vehicle.setLastTimingBeltMaintenanceOdometer(vehicle.getOdometerReturn());
+            vehicle.setLastTimingBeltMaintenanceOdometer(vehicle.getOdometer());
             return true;
         }
         return false;
