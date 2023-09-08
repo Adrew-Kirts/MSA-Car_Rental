@@ -13,10 +13,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Intege
     @Query(value="SELECT * FROM reservation r WHERE r.vehicle_id = :vehicleId AND r.rental_start > LOCALTIME", nativeQuery = true)
     List<Reservation> findReservationPlanning(@Param("vehicleId") int VehicleId);
 
-    @Query(value="SELECT * FROM reservation r WHERE r.vehicle_id = :vehicleId AND r.rental_start <= :rentalStart < r.rental_end AND r.rental_start < :rentalEnd <= r.rental_end", nativeQuery = true)
-    List<Reservation> isAvailable(@Param("vehicleId") int vehicleId, @Param("rentalStart")LocalDate rentalStart, @Param("rentalEnd")LocalDate rentalEnd);
+    @Query(value="SELECT * FROM reservation r WHERE r.vehicle_id = :vehicleId AND (r.rental_start between :rentalStart and :rentalEnd) AND (r.rental_end between :rentalStart and :rentalEnd)", nativeQuery = true)
+    List<Reservation> isBooked(@Param("vehicleId") int vehicleId, @Param("rentalStart")LocalDate rentalStart, @Param("rentalEnd")LocalDate rentalEnd);
 
-    @Query(value="SELECT * FROM reservation r WHERE r.customer_id = :customerId AND r.rental_start <= :rentalStart < r.rental_end AND r.rental_start < :rentalEnd <= r.rental_end", nativeQuery = true)
-    List<Reservation> isDisengage(@Param("customerId") int customerId, @Param("rentalStart")LocalDate rentalStart, @Param("rentalEnd")LocalDate rentalEnd);
+    @Query(value="SELECT * FROM reservation r WHERE r.customer_id = :customerId AND (r.rental_start between :rentalStart and :rentalEnd) AND (r.rental_end between :rentalStart and :rentalEnd)", nativeQuery = true)
+    List<Reservation> isEngage(@Param("customerId") int customerId, @Param("rentalStart")LocalDate rentalStart, @Param("rentalEnd")LocalDate rentalEnd);
 
 }

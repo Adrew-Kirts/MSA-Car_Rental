@@ -54,17 +54,16 @@ public class ReservationController {
         }
     }
     public void isVehicleAvailable (Reservation reservation){
-        if(!reservationRepository.isAvailable(reservation.getVehicleId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
+        if(!reservationRepository.isBooked(reservation.getVehicleId(), reservation.getRentalStart(), reservation.getRentalEnd()).isEmpty()){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "already reserved!!!");
         }
     }
     public void isCustomerNotAlreadyEngage (Reservation reservation){
-        if(!reservationRepository.isDisengage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
+        if(!reservationRepository.isEngage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "already engage!!!");
         }
-
     }
     @PostMapping
     public Optional<Reservation> addReservations(@RequestBody Reservation reservation) {
@@ -96,7 +95,7 @@ public class ReservationController {
         nextMaintenanceReservation.setRentalStart(lastEnd);
         nextMaintenanceReservation.setRentalEnd(lastEnd.plusDays(maintenanceDowntime));
         nextMaintenanceReservation.setVehicleId(vehicleId);
-
+        System.out.println(nextMaintenanceReservation);
     }
     public void findMaintenanceReservationDate(MaintenanceTicket maintenanceNeeded,int vehicleId){
         List<Reservation> allReservations = getAllReservationsForVehicle(vehicleId);
@@ -118,16 +117,19 @@ public class ReservationController {
             }
         }
     }
-    @PutMapping("/return")
-    public void vehicleReturn(@RequestBody Reservation reservation, int odometerReturn){
+    @PutMapping("/return/{odometerReturn}")
+    public void vehicleReturn(@RequestBody Reservation reservation,@PathVariable int odometerReturn){
         //ajuster le tarif / calculer le prix differenciel
         Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
         double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometer()-reservation.getMileageEstimation());
+        System.out.println(mileageBonus);
+        System.out.println(vehicle);
         if(mileageBonus>0){
             reservation.setPriceSurplus(mileageBonus);
         }
         vehicle.setOdometer(odometerReturn);
         List<MaintenanceTicket> maintenanceTicket = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/cm/" + vehicle.getId(), List.class);
+        System.out.println(maintenanceTicket);
         if(!maintenanceTicket.isEmpty()){
             maintenanceTicket.forEach(maintenanceNeeded->findMaintenanceReservationDate(maintenanceNeeded,vehicle.getId()));
         }
