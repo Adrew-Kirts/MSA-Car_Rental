@@ -43,10 +43,7 @@ public class ReservationController {
         return reservationRepository.findById(id);
     }
 
-    @PostMapping
-    public Optional<Reservation> addReservations(@RequestBody Reservation reservation) {
-        Customer customer = restTemplate.getForObject("http://MSA-CUSTOMER/customers/" + reservation.getCustomerId(), Customer.class);
-        Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+    public void isAgeHpOk(Customer customer, Vehicle vehicle){
         if (Validator.calculateAge(customer.getBirthdate()) < 21 && vehicle.getFiscalHp() > 8) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "too young!!!");
@@ -55,6 +52,29 @@ public class ReservationController {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "too much power!!!");
         }
+    }
+    public void isVehicleAvailable (Reservation reservation){
+        if(!reservationRepository.isAvailable(reservation.getVehicleId(),reservation.getRentalStart(),reservation.getRentalEnd())){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "already reserved!!!");
+        }
+    }
+    public void isCustomerNotAlreadyEngage (Reservation reservation){
+        if(!reservationRepository.isDisengage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd())){
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST, "already engage!!!");
+        }
+
+    }
+    @PostMapping
+    public Optional<Reservation> addReservations(@RequestBody Reservation reservation) {
+        Customer customer = restTemplate.getForObject("http://MSA-CUSTOMER/customers/" + reservation.getCustomerId(), Customer.class);
+        Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+
+        isAgeHpOk(customer,vehicle);
+        isVehicleAvailable(reservation);
+        isCustomerNotAlreadyEngage(reservation);
+
         reservation.setPrice(PriceController.calculatePrice(vehicle,reservation));
         Reservation reservationAdded = reservationRepository.save(reservation);
         return Optional.of(reservationAdded);
