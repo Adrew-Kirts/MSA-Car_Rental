@@ -3,6 +3,7 @@ package fr.campusnumerique.reservation.controller;
 import fr.campusnumerique.reservation.dao.ReservationRepository;
 import fr.campusnumerique.reservation.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -16,6 +17,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
+
+    @Autowired
+    @LoadBalanced
+    RestTemplate restTemplate;
+
     @Autowired
     private ReservationRepository reservationRepository;
 
@@ -39,10 +45,8 @@ public class ReservationController {
 
     @PostMapping
     public Optional<Reservation> addReservations(@RequestBody Reservation reservation) {
-        RestTemplate customerRestTemplate = new RestTemplate();
-        Customer customer = customerRestTemplate.getForObject("http://192.168.1.239:8085/customers/" + reservation.getCustomerId(), Customer.class);
-        RestTemplate vehicleRestTemplate = new RestTemplate();
-        Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+        Customer customer = restTemplate.getForObject("http://MSA-CUSTOMER/customers/" + reservation.getCustomerId(), Customer.class);
+        Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
         if (Validator.calculateAge(customer.getBirthdate()) < 21 && vehicle.getFiscalHp() > 8) {
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "too young!!!");
@@ -97,15 +101,13 @@ public class ReservationController {
     @PutMapping
     public void vehicleReturn(Reservation reservation, int odometerReturn){
         //ajuster le tarif / calculer le prix differenciel
-        RestTemplate vehicleRestTemplate = new RestTemplate();
-        Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+        Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
         double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometer()-reservation.getMileageEstimation());
         if(mileageBonus>0){
             reservation.setPriceSurplus(mileageBonus);
         }
         vehicle.setOdometer(odometerReturn);
-        RestTemplate maintenanceTemplate = new RestTemplate();
-        List<MaintenanceTicket> maintenanceTicket = maintenanceTemplate.getForObject("http://192.168.1.239:8086/vehicles/cm/" + vehicle.getId(), List.class);
+        List<MaintenanceTicket> maintenanceTicket = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/cm/" + vehicle.getId(), List.class);
         if(!maintenanceTicket.isEmpty()){
             maintenanceTicket.forEach(maintenanceNeeded->findMaintenanceReservationDate(maintenanceNeeded,vehicle.getId()));
         }
