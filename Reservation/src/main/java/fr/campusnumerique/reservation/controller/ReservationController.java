@@ -54,13 +54,13 @@ public class ReservationController {
         }
     }
     public void isVehicleAvailable (Reservation reservation){
-        if(!reservationRepository.isAvailable(reservation.getVehicleId(),reservation.getRentalStart(),reservation.getRentalEnd())){
+        if(!reservationRepository.isAvailable(reservation.getVehicleId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "already reserved!!!");
         }
     }
     public void isCustomerNotAlreadyEngage (Reservation reservation){
-        if(!reservationRepository.isDisengage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd())){
+        if(!reservationRepository.isDisengage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "already engage!!!");
         }
