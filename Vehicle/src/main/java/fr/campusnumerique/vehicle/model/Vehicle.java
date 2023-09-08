@@ -20,9 +20,8 @@ public class Vehicle {
     int fiscalHp;
 
     LocalDate datePickup;
-    int odometerPickup;
+    int odometer;
     LocalDate dateReturn;
-    int odometerReturn;
 
     float reservationPrice;
     float cleaningCost;
