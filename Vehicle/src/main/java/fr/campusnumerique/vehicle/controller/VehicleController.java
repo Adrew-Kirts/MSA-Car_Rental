@@ -2,6 +2,7 @@ package fr.campusnumerique.vehicle.controller;
 
 import com.sun.istack.NotNull;
 import fr.campusnumerique.vehicle.dao.VehicleRepository;
+import fr.campusnumerique.vehicle.model.MaintenanceTicket;
 import fr.campusnumerique.vehicle.model.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +30,10 @@ public class VehicleController {
     @GetMapping("/{id}")
     public Optional<Vehicle> getVehicleById(@PathVariable int id){
         return vehicleRepository.findById(id); }
+
+    @GetMapping("/cm/{id}")
+    public List<MaintenanceTicket> getMaintenanceState(@PathVariable int id){
+        return MaintenanceController.vehicleControl(vehicleRepository.getById(id)); }
 
 //    @GetMapping("/")
 //    public @ResponseBody Iterable<Vehicle> getAllVehiclesByAttribute(@RequestParam(required = false,value = "brand") String brand,
@@ -59,7 +64,7 @@ public class VehicleController {
     }
 
 //Check which vehicles are available
-    //tricky style
+// tricky style :
 //    @GetMapping(value="available/{startDate},{endDate}")
 //    public Collection<Vehicle> isAvailable(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
 //        return vehicleRepository.findAvailability(startDate,endDate);

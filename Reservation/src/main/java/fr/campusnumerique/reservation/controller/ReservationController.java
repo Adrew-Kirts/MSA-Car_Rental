@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +26,10 @@ public class ReservationController {
     @GetMapping
     public @ResponseBody Iterable<Reservation> getAllReservations() {
         return reservationRepository.findAll();
+    }
+
+    public List<Reservation> getAllReservationsForVehicle(int id){
+        return reservationRepository.findReservationPlanning(id);
     }
 
     @GetMapping("/{id}")
@@ -59,18 +66,48 @@ public class ReservationController {
         reservationRepository.deleteById(id);
     }
 
-//    @PutMapping
-//    public Reservation vehicleReturn(Reservation reservation, int odometerReturn){
-//        //ajuster le tarif / calculer le prix differenciel
-//        RestTemplate vehicleRestTemplate = new RestTemplate();
-//        Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
-//        double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometerPickup()-reservation.getMileageEstimation());
-//
-////        actualiser la bagnole (odometer)
-////                if (controle maintenance) => programmer maintenance
-//        vehicle.setOdometerPickup(odometerReturn);
-//                //maintenace + update?
-//
-//        return reservationRepository.save(reservation);
-//    }
+    public void setMaintenanceReservation(LocalDate lastEnd,int maintenanceDowntime,int vehicleId){
+        Reservation nextMaintenanceReservation = new Reservation();
+        nextMaintenanceReservation.setCustomerId(1);
+        nextMaintenanceReservation.setRentalStart(lastEnd);
+        nextMaintenanceReservation.setRentalEnd(lastEnd.plusDays(maintenanceDowntime));
+        nextMaintenanceReservation.setVehicleId(vehicleId);
+
+    }
+    public void findMaintenanceReservationDate(MaintenanceTicket maintenanceNeeded,int vehicleId){
+        List<Reservation> allReservations = getAllReservationsForVehicle(vehicleId);
+        for(int i=0;i<allReservations.size();i++){
+            LocalDate lastEnd;
+            if (i == 0) {
+                lastEnd = LocalDate.now();
+            }else {
+                lastEnd = allReservations.get(i-1).getRentalEnd();
+            }
+
+            LocalDate nextStart = allReservations.get(i).getRentalStart();
+
+            if (Period.between(lastEnd,nextStart).getDays()>=maintenanceNeeded.getDowntime()){
+                setMaintenanceReservation(lastEnd,maintenanceNeeded.getDowntime(),vehicleId);
+            }
+            if(i==allReservations.size()){
+                setMaintenanceReservation(allReservations.get(i).getRentalEnd(),maintenanceNeeded.getDowntime(),vehicleId);
+            }
+        }
+    }
+    @PutMapping
+    public void vehicleReturn(Reservation reservation, int odometerReturn){
+        //ajuster le tarif / calculer le prix differenciel
+        RestTemplate vehicleRestTemplate = new RestTemplate();
+        Vehicle vehicle = vehicleRestTemplate.getForObject("http://192.168.1.239:8086/vehicles/" + reservation.getVehicleId(), Vehicle.class);
+        double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometer()-reservation.getMileageEstimation());
+        if(mileageBonus>0){
+            reservation.setPriceSurplus(mileageBonus);
+        }
+        vehicle.setOdometer(odometerReturn);
+        RestTemplate maintenanceTemplate = new RestTemplate();
+        List<MaintenanceTicket> maintenanceTicket = maintenanceTemplate.getForObject("http://192.168.1.239:8086/vehicles/cm/" + vehicle.getId(), List.class);
+        if(!maintenanceTicket.isEmpty()){
+            maintenanceTicket.forEach(maintenanceNeeded->findMaintenanceReservationDate(maintenanceNeeded,vehicle.getId()));
+        }
+    }
 }
