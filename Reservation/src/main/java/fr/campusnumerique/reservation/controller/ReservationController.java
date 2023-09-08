@@ -98,8 +98,8 @@ public class ReservationController {
             }
         }
     }
-    @PutMapping
-    public void vehicleReturn(Reservation reservation, int odometerReturn){
+    @PutMapping("/return")
+    public void vehicleReturn(@RequestBody Reservation reservation, int odometerReturn){
         //ajuster le tarif / calculer le prix differenciel
         Vehicle vehicle = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/" + reservation.getVehicleId(), Vehicle.class);
         double mileageBonus = PriceController.calculateMileagePrice(vehicle,odometerReturn-vehicle.getOdometer()-reservation.getMileageEstimation());
