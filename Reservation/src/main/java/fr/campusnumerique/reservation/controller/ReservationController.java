@@ -89,7 +89,7 @@ public class ReservationController {
             if (Period.between(lastEnd,nextStart).getDays()>=maintenanceNeeded.getDowntime()){
                 setMaintenanceReservation(lastEnd,maintenanceNeeded.getDowntime(),vehicleId);
             }
-            if(i==allReservations.size()){
+            if(i==allReservations.size()-1){
                 setMaintenanceReservation(allReservations.get(i).getRentalEnd(),maintenanceNeeded.getDowntime(),vehicleId);
             }
         }
