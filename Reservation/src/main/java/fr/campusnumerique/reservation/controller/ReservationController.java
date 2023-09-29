@@ -4,6 +4,7 @@ import fr.campusnumerique.reservation.dao.ReservationRepository;
 import fr.campusnumerique.reservation.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -128,6 +129,7 @@ public class ReservationController {
             reservation.setPriceSurplus(mileageBonus);
         }
         vehicle.setOdometer(odometerReturn);
+        restTemplate.put("http://MSA-VEHICLE/vehicles/", vehicle, Vehicle.class);
         List<MaintenanceTicket> maintenanceTicket = restTemplate.getForObject("http://MSA-VEHICLE/vehicles/cm/" + vehicle.getId(), List.class);
         System.out.println(maintenanceTicket);
         if(!maintenanceTicket.isEmpty()){

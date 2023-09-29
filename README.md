@@ -11,4 +11,3 @@ Route | Method | Description
 `http://<host>:<port>/vehicules/` | `PUT` | Update vehicle
 `http://<host>:<port>/vehicules/id` | `DELETE` | Delete vehicle by ID
 `http://<host>:<port>/vehicules/available` | `GET` | 
-

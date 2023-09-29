@@ -35,8 +35,13 @@ public class VehicleController {
 
     //Get maintenance state of vehicle
     @GetMapping("/cm/{id}")
-    public List<MaintenanceTicket> getMaintenanceState(@PathVariable int id){
-        return MaintenanceController.vehicleControl(vehicleRepository.getById(id)); }
+    public List<MaintenanceTicket> getMaintenanceState(@PathVariable int id) {
+        Vehicle vehicle = vehicleRepository.findById(id).get();
+        List<MaintenanceTicket> maintenanceTicketList = MaintenanceController.vehicleControl(vehicle);
+        vehicle.setMaintenanceTicket(maintenanceTicketList);
+        vehicleRepository.save(vehicle);
+        return maintenanceTicketList;
+    }
 
 //    @GetMapping("/")
 //    public @ResponseBody Iterable<Vehicle> getAllVehiclesByAttribute(@RequestParam(required = false,value = "brand") String brand,

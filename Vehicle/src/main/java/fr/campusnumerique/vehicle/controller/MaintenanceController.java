@@ -1,9 +1,11 @@
 package fr.campusnumerique.vehicle.controller;
 
+import fr.campusnumerique.vehicle.dao.VehicleRepository;
 import fr.campusnumerique.vehicle.model.Vehicle;
 import fr.campusnumerique.vehicle.model.MaintenanceTicket;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MaintenanceController {
@@ -32,7 +34,9 @@ public class MaintenanceController {
 
     public static boolean vehicleTimingBeltMaintenanceNeeded(Vehicle vehicle){
         int timingBeltMaintenanceOld = vehicle.getOdometer() - vehicle.getLastTimingBeltMaintenanceOdometer();
+        System.out.println(vehicle.getOdometer());
         if(timingBeltMaintenanceOld >= 100000){
+            System.out.println("yo");
             vehicle.setLastTimingBeltMaintenanceOdometer(vehicle.getOdometer());
             return true;
         }
@@ -55,45 +59,51 @@ public class MaintenanceController {
         return false;
     }
 
-    public static void motorcycleMaintenanceControl(Vehicle vehicle){
+    public static List<MaintenanceTicket> motorcycleMaintenanceControl(Vehicle vehicle){
+        List<MaintenanceTicket> maintenanceTicketList = new ArrayList<>();
         if (motorcycleBrakeFluidMaintenanceNeeded(vehicle)){
-            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changement de liquide de frein",1));
+            maintenanceTicketList.add(new MaintenanceTicket("changement de liquide de frein",1));
         }
         if (motorcycleChainMaintenanceNeeded(vehicle)){
-            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("retendre la chaîne",1));
+            maintenanceTicketList.add(new MaintenanceTicket("retendre la chaîne",1));
         }
+        return maintenanceTicketList;
     }
 
-    public static void vehicleMaintenanceControl(Vehicle vehicle){
+    public static List<MaintenanceTicket> vehicleMaintenanceControl(Vehicle vehicle){
+        List<MaintenanceTicket> maintenanceTicketsList = new ArrayList<>();
         if(vehicleTimingBeltMaintenanceNeeded(vehicle)){
-            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer la courroie de distribution",3));
+            maintenanceTicketsList.add(new MaintenanceTicket("changer la courroie de distribution",3));
+            System.out.println(maintenanceTicketsList);
         }
         if(vehicleTireMaintenanceNeeded(vehicle)){
-            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer les pneus",1));
+            maintenanceTicketsList.add(new MaintenanceTicket("changer les pneus",1));
         }
+        return maintenanceTicketsList;
     }
 
-    public static void utilityMaintenanceControl(Vehicle vehicle){
+    public static MaintenanceTicket utilityMaintenanceControl(Vehicle vehicle){
+        MaintenanceTicket maintenanceTicket = null;
         if(utilitySuspensionMaintenanceNeeded(vehicle)){
-            vehicle.getMaintenanceTicket().add(new MaintenanceTicket("changer les suspensions",2));
+            maintenanceTicket = new MaintenanceTicket("changer les suspensions",2);
         }
+        return maintenanceTicket;
     }
 
 // return a list of maintenance ticket from vehicle.
     public static List<MaintenanceTicket> vehicleControl(Vehicle vehicle){
+        List<MaintenanceTicket> maintenanceTicketsList = new ArrayList<>();
         if(vehicle.getType().equals("motorcycle")){
-            motorcycleMaintenanceControl(vehicle);
-            return vehicle.getMaintenanceTicket();
+            maintenanceTicketsList = motorcycleMaintenanceControl(vehicle);
         }
         if(vehicle.getType().equals("car")){
-            vehicleMaintenanceControl(vehicle);
-            return vehicle.getMaintenanceTicket();
+            maintenanceTicketsList = vehicleMaintenanceControl(vehicle);
         }
         if(vehicle.getType().equals("utility")){
-            vehicleMaintenanceControl(vehicle);
-            utilityMaintenanceControl(vehicle);
-            return vehicle.getMaintenanceTicket();
+            maintenanceTicketsList = vehicleMaintenanceControl(vehicle);
+            maintenanceTicketsList.add(utilityMaintenanceControl(vehicle));
         }
-        return vehicle.getMaintenanceTicket();
+        System.out.println(vehicle.getMaintenanceTicket());
+        return maintenanceTicketsList;
     }
 }
