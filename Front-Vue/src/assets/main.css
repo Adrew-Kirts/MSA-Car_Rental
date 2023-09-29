@@ -1,0 +1,87 @@
+@import './base.css';
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.car {
+  background-color: var(--color-border);
+  padding: 1rem;
+  margin-bottom: 20px;
+  min-width: 250px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.car:hover {
+  background-color: var(--color-border-hover);
+}
+
+.car p {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.car .brand-model {
+  color: midnightblue;
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+}
+.carousel-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.car {
+  background-color: var(--color-border);
+  padding: 1rem;
+  margin-right: 20px;
+  min-width: 300px; /* Adjust the minimum width for cars */
+  border-radius: 8px;
+  display: inline-block; /* Display cars inline */
+  text-align: center;
+}
+
+.carousel p {
+  margin: 0;
+  font-size: 18px;
+  color: var(--color-text);
+}
+
+.carousel .brand-model {
+  color: midnightblue;
+}
+
