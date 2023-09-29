@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +30,7 @@ public class CustomerController {
     @PostMapping
     public Optional<Customer> addCustomers(@RequestBody Customer customer){
         Validator.licenseValidator(customer.getLicenseId());
-        if(!Validator.isMajor(customer.getBirthdate())){
+        if(!Validator.isMature(customer.getBirthdate())){
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "You need to be over 18 years old to reserve a vehicle");
         }
@@ -49,7 +48,7 @@ public class CustomerController {
         customerRepository.deleteById(id);
     }
 
-    //Get reserved vehicle ID's for a specific client
+    //Get reserved vehicle ID's for a specific customer
     @GetMapping(value="/getReservations/{id}")
     public List getReservations(@PathVariable int id){
         return customerRepository.findReservedVehicles(id);

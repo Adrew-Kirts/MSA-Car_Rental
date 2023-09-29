@@ -71,18 +71,10 @@ public class VehicleController {
         vehicleRepository.deleteById(id);
     }
 
-//Check which vehicles are available
-// tricky style :
-//    @GetMapping(value="available/{startDate},{endDate}")
-//    public Collection<Vehicle> isAvailable(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
-//        return vehicleRepository.findAvailability(startDate,endDate);
-//    }
-
     @GetMapping(value="available")
     public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
         return vehicleRepository.findAvailability(startDate,endDate);
     }
-
 
     //Possibility to search for multiple attributes
     //URL to use: http://localhost:8086/vehicles/?brand=Honda&type=car

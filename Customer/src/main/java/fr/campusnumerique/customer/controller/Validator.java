@@ -9,7 +9,7 @@ import java.time.Period;
 
 public class Validator {
 
-    public static boolean isMajor(LocalDate birthdate){
+    public static boolean isMature(LocalDate birthdate){
         LocalDate currentDate = LocalDate.now();
 
         int currentAge = Period.between(birthdate, currentDate).getYears();
