@@ -22,15 +22,18 @@ public class VehicleController {
 
     public VehicleController(VehicleRepository vehicleRepository) { this.vehicleRepository = vehicleRepository; }
 
+    //List all vehicles
     @GetMapping
     public @ResponseBody Iterable<Vehicle> getAllVehicles(){
         return vehicleRepository.findAll();
     }
 
+    //List car by id
     @GetMapping("/{id}")
     public Optional<Vehicle> getVehicleById(@PathVariable int id){
         return vehicleRepository.findById(id); }
 
+    //Get maintenance state of vehicle
     @GetMapping("/cm/{id}")
     public List<MaintenanceTicket> getMaintenanceState(@PathVariable int id){
         return MaintenanceController.vehicleControl(vehicleRepository.getById(id)); }
