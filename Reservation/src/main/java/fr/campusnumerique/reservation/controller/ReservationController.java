@@ -14,6 +14,7 @@ import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {

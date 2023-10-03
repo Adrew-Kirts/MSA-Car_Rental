@@ -1,16 +1,14 @@
 <template>
 
-  <reservation-button></reservation-button>
 
 </template>
 
 <script>
 import vehicle from "./Vehicle.vue";
-import VehicleReservation from "@/components/ReservationButton.vue";
-import ReservationButton from "@/components/ReservationButton.vue";
+
 
 export default {
-  components: {ReservationButton, VehicleReservation},
+  components: {},
   computed: {
     vehicle() {
       return vehicle

@@ -36,6 +36,7 @@ export default {
 
   <Vehicle v-for="vehicle in vehicles"
             :key="vehicle.id"
+            :id="vehicle.id"
             :brand="vehicle.brand"
             :model="vehicle.model"
             :name="vehicle.name"

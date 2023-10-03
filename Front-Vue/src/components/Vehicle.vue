@@ -58,7 +58,7 @@ export default {
         <VehicleDetails
       ></VehicleDetails>
       </div>
-
+      <router-link :to="{ path: '/reservation/'+id }"><button>Reserve</button></router-link>
     </div>
   </div>
 

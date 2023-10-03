@@ -9,6 +9,8 @@ export default defineComponent({
     //added for login
     const formState = reactive({
       user: '',
+      permit: '',
+      age: "",
       password: '',});
 
     const handleFinish = values => {
@@ -52,18 +54,8 @@ export default defineComponent({
 
 <template>
 
-  <button @click="showDrawer">Login</button>
 
-  <router-link :to="{ path: '/signup' }"><button>Signup</button></router-link>
-
-  <a-drawer
-      title="Existing user"
-      placement="right"
-      :closable="true"
-      v-model:visible="visible"
-      :after-visible-change="afterVisibleChange"
-  >
-    <p>Please login with your credentials</p>
+    <p>SIGNUP</p>
 
 
     <a-form
@@ -82,6 +74,20 @@ export default defineComponent({
           <template #prefix><LockOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
         </a-input>
       </a-form-item>
+
+      <a-form-item>
+        <a-input v-model:value="formState.age" placeholder="Age">
+          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        </a-input>
+      </a-form-item>
+
+      <a-form-item>
+        <a-input v-model:value="formState.permit" placeholder="Permit number">
+          <template #prefix><UserOutlined style="color: rgba(0, 0, 0, 0.25)" /></template>
+        </a-input>
+      </a-form-item>
+
+
       <a-form-item>
         <a-button
             type="primary"
@@ -93,7 +99,6 @@ export default defineComponent({
       </a-form-item>
     </a-form>
 
-  </a-drawer>
 
 
 </template>
