@@ -5,16 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f62ab-a9f5-4c00-a17a-e92ff654cfaf" name="Changes" comment="First commit">
-      <change afterPath="$PROJECT_DIR$/Front-Vue/data/license.mv.db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/assets/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/components/Vehicle.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/services/VehicleService.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/views/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/views/VehicleList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-Vue/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-Vue/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-Vue/src/components/ReservationButton.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-Vue/src/components/VehicleDetails.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Front-Vue/tailwind.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vehicle/src/main/java/fr/campusnumerique/vehicle/controller/VehicleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vehicle/src/main/java/fr/campusnumerique/vehicle/controller/VehicleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/data/license.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/data/license.mv.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/assets/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/assets/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/assets/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/assets/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/components/Vehicle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/components/Vehicle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/services/VehicleService.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/services/VehicleService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/views/Home.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Front-Vue/src/views/VehicleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/views/VehicleList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +34,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2W4AomfyJggpJrmBkIFXghEE9WX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/user/Documents/vue-weatherProject",
+    "last_opened_file_path": "/home/user/Documents/MSA-Car_Rental",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -54,6 +61,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Front-Vue/src/main.js" working-dir="$PROJECT_DIR$/Front-Vue/src">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.main.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -63,6 +85,8 @@
       <option name="presentableId" value="Default" />
       <updated>1695981656231</updated>
       <workItem from="1695981657266" duration="12981000" />
+      <workItem from="1696228730999" duration="5177000" />
+      <workItem from="1696233950596" duration="21161000" />
     </task>
     <servers />
   </component>

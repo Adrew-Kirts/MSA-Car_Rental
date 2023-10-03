@@ -1,9 +1,21 @@
-<script>
+<template>
 
-import VehicleDetails from "@/components/VehicleDetails.vue";
+  <reservation-button></reservation-button>
+
+</template>
+
+<script>
+import vehicle from "./Vehicle.vue";
+import VehicleReservation from "@/components/ReservationButton.vue";
+import ReservationButton from "@/components/ReservationButton.vue";
 
 export default {
-  name: "Vehicle",
+  components: {ReservationButton, VehicleReservation},
+  computed: {
+    vehicle() {
+      return vehicle
+    }
+  },
   props: {
     id: Number,
     registration: String,
@@ -27,9 +39,6 @@ export default {
     lastChainMaintenanceDate: Date,
     lastSuspensionMaintenanceDate: Date
   },
-  components: {
-    VehicleDetails,
-  },
   data() {
     return {
       showDetails: false,
@@ -40,28 +49,9 @@ export default {
       this.showDetails = !this.showDetails;
     },
   },
-}
-
+};
 </script>
 
-<template>
+<style scoped>
 
-  <div class="car">
-    <p class="brand-model">{{ brand }} {{ model }}</p>
-    <p>Price per day: ${{ reservationPrice }}</p>
-    <button @click="toggleDetails">Show Details</button>
-    <div v-if="showDetails">
-      <p>Fiscal HP: {{fiscalHp}}</p>
-      <p>Displacement: {{displacement}}</p>
-      <p>Mileage cost: ${{mileageCost}} per KM</p>
-      <div>
-        <VehicleDetails
-      ></VehicleDetails>
-      </div>
-
-    </div>
-  </div>
-
-
-</template>
-
+</style>

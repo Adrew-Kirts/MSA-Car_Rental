@@ -1,11 +1,15 @@
 import axios from 'axios';
+const VEHICLE_API_URL = import.meta.env.VITE_VEHICLE_BASE_URL
 
-const VEHICLE_API_BASE_URL = 'http://localhost:8086/vehicles';
 
 class VehicleService{
 
     getVehicles(){
-        return axios.get(VEHICLE_API_BASE_URL);
+        return axios.get(VEHICLE_API_URL+"vehicles");
+    }
+
+    getVehicleById(id){
+        return axios.get(VEHICLE_API_URL+"vehicles/"+id);
     }
 
 }
