@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="199f62ab-a9f5-4c00-a17a-e92ff654cfaf" name="Changes" comment="allVehicles list">
-      <change afterPath="$PROJECT_DIR$/Front-Vue/src/views/SignUp.vue" afterDir="false" />
+    <list default="true" id="199f62ab-a9f5-4c00-a17a-e92ff654cfaf" name="Changes" comment="add Ant">
+      <change afterPath="$PROJECT_DIR$/vrooom/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Customer/src/main/java/fr/campusnumerique/customer/controller/CustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/assets/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/assets/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/components/ReservationButton.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/components/Vehicle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/components/Vehicle.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/components/VehicleDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/components/VehicleDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/views/VehicleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/views/VehicleList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Front-Vue/src/views/VehicleReservation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Front-Vue/src/views/VehicleReservation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reservation/src/main/java/fr/campusnumerique/reservation/controller/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Reservation/src/main/java/fr/campusnumerique/reservation/controller/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vrooom/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/vrooom/src/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +38,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/user/Documents/MSA-Car_Rental",
+    "last_opened_file_path": "/home/nicolas/SPA/MSA-Car_Rental/vrooom",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -58,6 +49,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vrooom" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -82,6 +74,7 @@
       <workItem from="1695981657266" duration="12981000" />
       <workItem from="1696228730999" duration="5177000" />
       <workItem from="1696233950596" duration="31189000" />
+      <workItem from="1696403473874" duration="1860000" />
     </task>
     <task id="LOCAL-00001" summary="allVehicles list">
       <option name="closed" value="true" />
@@ -91,7 +84,31 @@
       <option name="project" value="LOCAL" />
       <updated>1696319744950</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="vrooom project init">
+      <option name="closed" value="true" />
+      <created>1696403731061</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696403731061</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add Ant">
+      <option name="closed" value="true" />
+      <created>1696404215107</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696404215107</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add Ant">
+      <option name="closed" value="true" />
+      <created>1696404786495</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696404786495</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,6 +118,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First commit" />
     <MESSAGE value="allVehicles list" />
-    <option name="LAST_COMMIT_MESSAGE" value="allVehicles list" />
+    <MESSAGE value="vrooom project init" />
+    <MESSAGE value="add Ant" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Ant" />
   </component>
 </project>
