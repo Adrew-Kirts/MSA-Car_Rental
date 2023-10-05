@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/vehicles")
 public class VehicleController {
@@ -76,8 +77,8 @@ public class VehicleController {
 //    }
 
     @GetMapping(value="available")
-    public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
-        return vehicleRepository.findAvailability(startDate,endDate);
+    public Collection<Vehicle> isAvailable(@RequestParam("type") String type, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+        return vehicleRepository.findAvailability(type,startDate,endDate);
     }
 
 

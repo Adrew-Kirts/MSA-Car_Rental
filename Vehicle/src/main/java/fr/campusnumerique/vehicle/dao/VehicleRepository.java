@@ -15,8 +15,8 @@ import java.util.Optional;
 
 public interface VehicleRepository extends JpaRepository<Vehicle, Integer>{
 
-    @Query(value = "SELECT * FROM vehicle v WHERE v.id NOT IN (SELECT vehicle_id FROM reservation r WHERE r.rental_end > :startDate > r.rental_start AND r.rental_start < :endDate < r.rental_end )", nativeQuery = true)
-    Collection<Vehicle> findAvailability(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    @Query(value = "SELECT * FROM vehicle v WHERE v.type = :type AND (v.id NOT IN (SELECT vehicle_id FROM reservation r WHERE r.rental_end > :startDate > r.rental_start AND r.rental_start < :endDate < r.rental_end ))", nativeQuery = true)
+    Collection<Vehicle> findAvailability(@Param("type") String type, @Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
 //    @Query(value = "SELECT * FROM vehicle v WHERE v.brand = :brand AND v.color = :color AND v.model = :model AND v.type = :type AND v.load_volume = :loadVolume AND v.displacement = :displacement", nativeQuery = true)
 //    Collection<Vehicle> findAllByAttribute(@Param("brand") String brand, @Param("color") String color,@Param("model") String model,@Param("type") String type,@Param("loadVolume")int loadVolume,@Param("displacement") int displacement);

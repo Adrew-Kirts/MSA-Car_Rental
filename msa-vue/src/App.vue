@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-    <h1>MSA<span id="title">Car Rental</span></h1>
+    <h1 class="text-4xl">MSA<span class="text-2xl" id="title">Car Rental</span></h1>
 
     <div class="wrapper">
 <!--      <HelloWorld msg="You did it!" />-->
