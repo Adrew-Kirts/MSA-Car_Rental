@@ -26,7 +26,7 @@ export default {
 <!--    </a>-->
 
   <a-popover
-      v-model:visible="visible"
+      v-model:open="visible"
       title="Title"
       trigger="click"
       placement="bottomLeft">
@@ -67,8 +67,10 @@ export default {
           <a-button type="link" html-type="submit">Login</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link" html-type="submit">Create Account</a-button>
+          <a-button type="link">Create Account</a-button>
         </a-form-item>
+
+
 
       </a-form>
     </template>

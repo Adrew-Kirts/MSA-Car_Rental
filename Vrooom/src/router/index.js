@@ -1,8 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '@/views/HomeView.vue'
-import VehicleReservation from "@/views/VehicleReservation.vue";
-import VehicleList from "@/views/VehicleList.vue";
-import Nav from "@/components/Navbar.vue";
 import About from "@/views/About.vue";
 import Signup from "@/views/Signup.vue"
 import HomeView from '../views/HomeView.vue'

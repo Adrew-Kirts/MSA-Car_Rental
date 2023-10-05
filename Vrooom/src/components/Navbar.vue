@@ -6,13 +6,13 @@ export default {
   components: {LoginBox},
   data() {
     return {
-      visible: false,
+      open: false,
     }
 
   },
   methods: {
     showDrawer() {
-      this.visible = true
+      this.open = true
     }
   }
 }
@@ -29,7 +29,7 @@ export default {
         placement="top"
         :closable="false"
         :height="80"
-        v-model:visible="visible">
+        v-model:open="open">
 
       <div class="flex-container">
         <LoginBox></LoginBox>
