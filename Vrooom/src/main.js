@@ -16,4 +16,4 @@ app.use(router)
 // register Ant globally
 app.use(Antd).mount("#app");
 
-app.mount('#app')
+// app.mount('#app')
