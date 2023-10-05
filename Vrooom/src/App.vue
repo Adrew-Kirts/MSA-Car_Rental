@@ -1,28 +1,29 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import Navbar from "@/components/Navbar.vue";
-// import HelloWorld from './components/HelloWorld.vue'
 import QuickStart from './components/QuickStart.vue'
 </script>
 
 <template>
+  <body>
   <header>
 <!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
 
     <div class="wrapper">
 
       <nav>
-<!--        <RouterLink to="/">Home</RouterLink>-->
-<!--        <RouterLink to="/about">About</RouterLink>-->
+
 <Navbar></Navbar>
       </nav>
     </div>
   </header>
 
   <RouterView />
+  </body>
 </template>
 
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -83,5 +84,12 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+
+  body {
+    background-image: url('@/assets/sunset_jam.JPG'); /* Update the path to your image */
+    background-size: cover;
+    background-position: center;
+  }
+
 }
 </style>

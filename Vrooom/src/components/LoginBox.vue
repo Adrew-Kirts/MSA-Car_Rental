@@ -1,6 +1,5 @@
 <script>
 
-
 export default {
   data(){
     return {
@@ -18,17 +17,11 @@ export default {
 
 <template>
 
-
-<!--  <a-dropdown>-->
-<!--    <a class="ant-dropdown-link">-->
-<!--      Login / Signup-->
-<!--      <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px;">-->
-<!--    </a>-->
-
   <a-popover
       v-model:open="visible"
       title="Title"
-      trigger="click"
+      trigger="hover"
+      color="rgba(255, 255, 255, 0.8)"
       placement="bottomLeft">
 
     <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px;">
@@ -71,7 +64,6 @@ export default {
         </a-form-item>
 
 
-
       </a-form>
     </template>
   </a-popover>
@@ -92,6 +84,7 @@ export default {
   color: black;
   font-family: Inter,sans-serif;
 }
+
 
 </style>
 

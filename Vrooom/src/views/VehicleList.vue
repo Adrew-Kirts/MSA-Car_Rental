@@ -37,7 +37,8 @@ export default {
 <template>
 
   <ul>
-    <Vehicle v-on:click="showDetails(Vehicle)" v-for="Vehicle in Vehicles" :key="Vehicle.id"></Vehicle>
+    <Vehicle v-on:click="showDetails(vehicle)" v-for="vehicle in Vehicles" :key="vehicle.id" :vehicle="vehicle"></Vehicle>
+
   </ul>
 
   <div v-if="isModalOpen" class="fixed inset-0 flex items-center justify-center z-50">

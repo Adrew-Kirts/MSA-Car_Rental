@@ -2,14 +2,14 @@
 export default {
   name:"Vehicle",
   props:{
-    Vehicle:Object
+    vehicle:Object
   }
 }
 </script>
 
 <template>
   <li>
-    <h3>{{Vehicle.brand}} {{Vehicle.model}}</h3>
+    <h3>{{vehicle.brand}} {{vehicle.model}}</h3>
   </li>
 </template>
 
