@@ -73,8 +73,8 @@ public class VehicleController {
     }
 
     @GetMapping(value="available")
-    public Collection<Vehicle> isAvailable(@RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
-        return vehicleRepository.findAvailability(startDate,endDate);
+    public Collection<Vehicle> isAvailable(@RequestParam("type") String type, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
+        return vehicleRepository.findAvailability(type,startDate,endDate);
     }
 
     //Possibility to search for multiple attributes

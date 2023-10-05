@@ -1,44 +1,37 @@
 # MSA-Car_Rental
 MSA Spring Boot application for car rental service
 
-## API routes 
+### Service véhicules
 
-### MS Vehicle 
-Route | Method | Description
---- | --- | ---|
-`http://<host>:<port>/vehicules/` | `GET` | List all vehicles
-`http://<host>:<port>/vehicules/{id}` | `GET` | List vehicle by ID
-`http://<host>:<port>/vehicules/cm/{id}` | `GET` | Show maintenance state vehicle
-`http://<host>:<port>/vehicules/` | `POST` | Add vehicle
-`http://<host>:<port>/vehicules/` | `PUT` | Update vehicle
-`http://<host>:<port>/vehicules/{id}` | `DELETE` | Delete vehicle by ID
-`http://<host>:<port>/vehicules/available/?startDate='{YYYY-MM-DD}'&endDate={YYYY-MM-DD}` | `GET` | List available vehicles based on start- and end date
-`http://<host>:<port>/vehicules/?brand={brand}` | `GET` | List vehicles by precised attribute(s)
-`&type={vehicle type}`
-`&color={color}`
-`&fiscalHp={int}` 
+Route | Méthode | Description
+-|:-:|-
+`http://<host>:<port>/vehicules/` | `GET` | Lister tous les véhicules
+`http://<host>:<port>/vehicules/<id>` | `GET` | Afficher le véhicule avec l'id
+`http://<host>:<port>/vehicules/cm/<id>` | `GET` | Lister les tickets de maintenance d'un véhicules id
+`http://<host>:<port>/vehicules/` | `POST` | Enregistrer un nouveau vehicule
+`http://<host>:<port>/vehicules/` | `PUT` | Modifier un véhicule
+`http://<host>:<port>/vehicules/<id>` | `DELETE` | Supprimer un véhicule
+`http://<host>:<port>/vehicules/available?startDate=<date>&endDate=<date>` | `GET` | Lister les véhicules disponible entre les dates
+`http://<host>:<port>/vehicules/?brand=<brand&type=<type>&color=<color>&fiscalHp=<fiscalHp>` | `GET` | Lister les véhicules par marque/type/couleur/puissance
 
+### Service clients
 
-### MS Reservation
+Route | Méthode | Description
+-|:-:|-
+`http://<host>:<port>/customers/` | `GET` | Lister tous les clients
+`http://<host>:<port>/customers/<id>` | `GET` | Afficher le client avec l'id
+`http://<host>:<port>/customers/` | `POST` | Enregistrer un nouveau client
+`http://<host>:<port>/customers/` | `PUT` | Modifier une fiche client
+`http://<host>:<port>/customers/<id>` | `DELETE` | Supprimer un client
+`http://<host>:<port>/customers/getReservation/<id>` | `GET` | Lister les véhicules réservé par un client
 
-Route | Method | Description
---- | --- | ---|
-`http://<host>:<port>/reservations/` | `GET` | List all reservations
-`http://<host>:<port>/reservations/{id}` | `GET` | List reservations by ID
-`http://<host>:<port>/reservations/` | `POST` | Add reservation with reservation body
-`http://<host>:<port>/reservations/` | `PUT` | Update resveration with given reservation body
-`http://<host>:<port>/reservations/{id}` | `DELETE` | Delete reservation by id
-`http://<host>:<port>/return/{odometerReturn}` | `PUT` | Calculate surplus based on return mileage / schedule maintenance if needed
+### Service reservation
 
-
-### MS Customer
-
-Route | Method | Description
---- | --- | ---|
-`http://<host>:<port>/customers/` | `GET` | List all customers
-`http://<host>:<port>/customers/{id}` | `GET` | List all customers by ID
-`http://<host>:<port>/customers/` | `POST` | Add customer with customer body
-`http://<host>:<port>/customers/` | `PUT` | Update customer with given customer body
-`http://<host>:<port>/customers/{id}` | `DELETE` | Delete customer by id 
-`http://<host>:<port>/customers/getReservations/{id}` | `GET` | List reserved vehicle ID's by customer ID
-
+Route | Méthode | Description
+-|:-:|-
+`http://<host>:<port>/reservations/` | `GET` | Lister toutes les réservations
+`http://<host>:<port>/reservations/<id>` | `GET` | Afficher la réservation avec l'id
+`http://<host>:<port>/reservations/` | `POST` | Enregistrer une nouvelle réservation
+`http://<host>:<port>/reservations/` | `PUT` | Modifier une réservation
+`http://<host>:<port>/reservations/<id>` | `DELETE` | Supprimer une réservation
+`http://<host>:<port>/reservations/return/<kilométrage>` | `PUT` | Rendre un véhicule

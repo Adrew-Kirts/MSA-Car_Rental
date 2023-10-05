@@ -1,9 +1,11 @@
 <script>
 
 import LoginBox from "@/components/LoginBox.vue";
+import VehicleTypeSelection from "@/components/VehicleTypeSelection.vue";
+import AboutComponent from "@/components/AboutComponent.vue";
 
 export default {
-  components: {LoginBox},
+  components: {AboutComponent, VehicleTypeSelection, LoginBox},
   data() {
     return {
       open: false,
@@ -32,19 +34,16 @@ export default {
         v-model:open="open">
 
       <div class="flex-container">
+
+        <router-link to="/"><img alt="logo" src="@/assets/logo.svg" :width="50"></router-link>
+
         <LoginBox></LoginBox>
 
-        <router-link to="/vehicles" class="router-link">
-          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">All our Vehicles</a-button>
-        </router-link>
+        <VehicleTypeSelection></VehicleTypeSelection>
 
-        <router-link to="/about" class="router-link">
-          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">About</a-button>
-        </router-link>
+        <AboutComponent></AboutComponent>
+
       </div>
-
     </a-drawer>
   </div>
 </template>
@@ -80,5 +79,17 @@ export default {
 .ant-drawer{
   padding: 13px;
 }
+
+.a:hover{
+  background-color: hsla(258.8, 79.3%, 47.5%, 0.2);
+}
+
+.logo-container {
+  //display: flex;
+  //justify-content: center;
+  //align-items: flex-start;
+  //height: 450px;
+}
+
 
 </style>
