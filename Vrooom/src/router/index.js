@@ -5,6 +5,9 @@ import VehicleList from "@/views/VehicleList.vue";
 import Nav from "@/components/Navbar.vue";
 import About from "@/views/About.vue";
 import Signup from "@/views/Signup.vue"
+import HomeView from '../views/HomeView.vue'
+import VehicleList from "@/views/VehicleList.vue";
+import VehicleReservation from "@/views/VehicleReservation.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -41,6 +44,11 @@ const router = createRouter({
       path: '/signup',
       name: 'User Registration',
       component: Signup
+    },
+    {
+      path:'/vehicles/available',
+      name:'available',
+      component:VehicleList
     }
   ]
 })

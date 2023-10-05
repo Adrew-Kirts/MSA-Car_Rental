@@ -15,3 +15,5 @@ app.use(createPinia())
 app.use(router)
 // register Ant globally
 app.use(Antd).mount("#app");
+
+// app.mount('#app')
