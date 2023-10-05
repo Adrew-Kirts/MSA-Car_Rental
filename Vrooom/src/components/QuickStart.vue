@@ -12,7 +12,7 @@ export default {
   methods:{
     submit(){
       this.$router.push({
-        path:'/available' ,
+        path:'/vehicles' ,
         query:{
           type:this.type ,
           startDate:this.date[0].format('YYYY-MM-DD') ,
