@@ -23,15 +23,18 @@ public class VehicleController {
 
     public VehicleController(VehicleRepository vehicleRepository) { this.vehicleRepository = vehicleRepository; }
 
+    //List all vehicles
     @GetMapping
     public @ResponseBody Iterable<Vehicle> getAllVehicles(){
         return vehicleRepository.findAll();
     }
 
+    //List car by id
     @GetMapping("/{id}")
     public Optional<Vehicle> getVehicleById(@PathVariable int id){
         return vehicleRepository.findById(id); }
 
+    //Get maintenance state of vehicle
     @GetMapping("/cm/{id}")
     public List<MaintenanceTicket> getMaintenanceState(@PathVariable int id) {
         Vehicle vehicle = vehicleRepository.findById(id).get();
@@ -69,18 +72,10 @@ public class VehicleController {
         vehicleRepository.deleteById(id);
     }
 
-//Check which vehicles are available
-// tricky style :
-//    @GetMapping(value="available/{startDate},{endDate}")
-//    public Collection<Vehicle> isAvailable(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
-//        return vehicleRepository.findAvailability(startDate,endDate);
-//    }
-
     @GetMapping(value="available")
     public Collection<Vehicle> isAvailable(@RequestParam("type") String type, @RequestParam("startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate, @RequestParam("endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate){
         return vehicleRepository.findAvailability(type,startDate,endDate);
     }
-
 
     //Possibility to search for multiple attributes
     //URL to use: http://localhost:8086/vehicles/?brand=Honda&type=car

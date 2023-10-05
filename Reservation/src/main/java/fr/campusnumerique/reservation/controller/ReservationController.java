@@ -4,7 +4,6 @@ import fr.campusnumerique.reservation.dao.ReservationRepository;
 import fr.campusnumerique.reservation.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -15,6 +14,7 @@ import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/reservations")
 public class ReservationController {
@@ -63,7 +63,7 @@ public class ReservationController {
     public void isCustomerNotAlreadyEngage (Reservation reservation){
         if(!reservationRepository.isEngage(reservation.getCustomerId(),reservation.getRentalStart(),reservation.getRentalEnd()).isEmpty()){
             throw new ResponseStatusException(
-                    HttpStatus.BAD_REQUEST, "already engage!!!");
+                    HttpStatus.BAD_REQUEST, "already engaged!!!");
         }
     }
     @PostMapping
