@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
+import VehicleReservation from "@/views/VehicleReservation.vue";
+import VehicleList from "@/views/VehicleList.vue";
+import Nav from "@/components/Navbar.vue";
+import About from "@/views/About.vue";
+import Signup from "@/views/Signup.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +31,16 @@ const router = createRouter({
       path: '/vehicles/:id',
       name: 'vehicleReservation',
       component: VehicleReservation
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },
+    {
+      path: '/signup',
+      name: 'User Registration',
+      component: Signup
     }
   ]
 })
