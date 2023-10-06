@@ -60,7 +60,11 @@ export default {
           <a-button type="link" html-type="submit">Login</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">Create Account</a-button>
+          <a-button to="/signup" type="link">Create Account</a-button>
+
+
+          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
+          <router-link to="/signup">Create Account</router-link>
         </a-form-item>
 
 
