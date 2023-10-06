@@ -13,6 +13,7 @@ export default {
 
 <template>
   <div class="box">
+
     <h1>Current registered user</h1>
     <template v-if="currentUser">
       <p>First Name: {{ currentUser.firstName }}</p>
