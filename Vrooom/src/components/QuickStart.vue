@@ -51,8 +51,9 @@ export default {
   display: flex;
   justify-content: space-evenly;
   padding: 50px;
-  border: solid 1px green;
+  border: solid 1px #41B883 ;
   border-radius: 10px;
+  box-shadow: 0 0 50px 0 #41B883 inset;
 }
 
 #logoIcon {
