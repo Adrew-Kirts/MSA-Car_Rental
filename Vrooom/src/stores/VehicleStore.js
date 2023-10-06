@@ -21,6 +21,7 @@ export const useVehicleStore = defineStore('vehicleStore', {
             catch (error) {
                 alert(error)
                 console.log(error)
+
             }
         }
     },
