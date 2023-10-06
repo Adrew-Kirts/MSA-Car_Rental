@@ -55,7 +55,7 @@ export default {
           <a-button type="link" @click="lookAt('utility')">Utility</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link" >All</a-button>
+          <a-button type="link" @click="lookAt(null)">All</a-button>
         </a-form-item>
 
 

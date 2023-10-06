@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="199f62ab-a9f5-4c00-a17a-e92ff654cfaf" name="Changes" comment="add axios">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vrooom/src/components/QuickStart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Vrooom/src/components/QuickStart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vrooom/src/components/Vehicle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Vrooom/src/components/Vehicle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vrooom/src/components/VehicleTypeSelection.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Vrooom/src/components/VehicleTypeSelection.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vrooom/src/services/VehiclesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/Vrooom/src/services/VehiclesService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vrooom/src/views/VehicleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Vrooom/src/views/VehicleList.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +40,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/nicolas/SPA/MSA-Car_Rental/Vrooom",
+    "last_opened_file_path": "/home/nicolas/MSA/Front-Vue",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -73,6 +77,7 @@
       <workItem from="1696228730999" duration="5177000" />
       <workItem from="1696233950596" duration="31189000" />
       <workItem from="1696403473874" duration="3168000" />
+      <workItem from="1696583438797" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="allVehicles list">
       <option name="closed" value="true" />

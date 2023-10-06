@@ -28,7 +28,7 @@ const router = createRouter({
       component: VehicleList
     },
     {
-      path: '/vehicles/:id',
+      path: '/vehicle',
       name: 'vehicleReservation',
       component: VehicleReservation
     },
@@ -47,6 +47,11 @@ const router = createRouter({
     //   name:'available',
     //   component:VehicleList
     // }
+    {
+      path:'/reservation',
+      name: 'Add Reservation',
+      component:VehicleReservation
+    }
   ]
 })
 
