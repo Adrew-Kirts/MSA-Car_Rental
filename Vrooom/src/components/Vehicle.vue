@@ -1,15 +1,15 @@
 <script>
 export default {
-  name:"Vehicle",
-  props:{
-    vehicle:Object
+  name: "Vehicle",
+  props: {
+    vehicle: Object
   }
 }
 </script>
 
 <template>
   <li>
-    <h3>{{vehicle.brand}} {{vehicle.model}}</h3>
+    <h3>{{ vehicle.brand }} {{ vehicle.model }}</h3>
   </li>
 </template>
 

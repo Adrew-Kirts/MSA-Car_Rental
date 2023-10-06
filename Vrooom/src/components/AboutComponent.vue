@@ -1,6 +1,5 @@
 <script>
 
-
 export default {
   data() {
     return {
@@ -30,52 +29,16 @@ export default {
     <template #content>
 
       <p class="ant-btn">Site created by:</p>
-<div class="photos">
-      <img src="../assets/nico.png" height="180"/>
-      <img src="../assets/ezra.png" height="180"/>
-</div>
+      <div class="photos">
+        <img src="../assets/nico.png" height="180"/>
+        <img src="../assets/ezra.png" height="180"/>
+      </div>
 
-      <!--      <a-form-->
-      <!--          :model="formState"-->
-      <!--          name="basic"-->
-      <!--          :label-col="{ span: 8 }"-->
-      <!--          :wrapper-col="{ span: 16 }"-->
-      <!--          autocomplete="off"-->
-      <!--      >-->
-      <!--        <a-form-item-->
-      <!--            label="Username"-->
-      <!--            name="username"-->
-      <!--            :rules="[{ required: true, message: 'Please input your username!' }]"-->
-      <!--        >-->
-      <!--          <a-input v-model:value="formState.username" />-->
-      <!--        </a-form-item>-->
-
-      <!--        <a-form-item-->
-      <!--            label="Password"-->
-      <!--            name="password"-->
-      <!--            :rules="[{ required: true, message: 'Please input your password!' }]"-->
-      <!--        >-->
-      <!--          <a-input-password v-model:value="formState.password" />-->
-      <!--        </a-form-item>-->
-
-      <!--        <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">-->
-      <!--          <a-checkbox v-model:checked="formState.remember">Remember me</a-checkbox>-->
-      <!--        </a-form-item>-->
-
-      <!--        <a-form-item :wrapper-col="{ offset: 10, span: 16 }">-->
-      <!--          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">-->
-      <!--          <a-button type="link" html-type="submit">Login</a-button>-->
-      <!--          <br>-->
-      <!--          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">-->
-      <!--          <a-button type="link">Create Account</a-button>-->
-      <!--        </a-form-item>-->
-      <!--      </a-form>-->
-
+      <router-link to="/about">About page</router-link>
 
     </template>
 
   </a-popover>
-
 
 </template>
 

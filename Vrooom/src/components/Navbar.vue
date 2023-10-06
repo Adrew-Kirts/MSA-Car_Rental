@@ -61,34 +61,31 @@ export default {
   text-align: center;
 }
 
-.ant-btn{
+.ant-btn {
   padding: 0 5px;
   font-size: 18px;
   color: black;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
 }
 
-.ant-drawer-body{
+.ant-drawer-body {
   padding: 13px;
 }
 
-.ant-drawer .ant-drawer-body{
+.ant-drawer .ant-drawer-body {
   padding: 13px;
 }
 
-.ant-drawer{
+.ant-drawer {
   padding: 13px;
 }
 
-.a:hover{
+.a:hover {
   background-color: hsla(258.8, 79.3%, 47.5%, 0.2);
 }
 
 .logo-container {
-  //display: flex;
-  //justify-content: center;
-  //align-items: flex-start;
-  //height: 450px;
+//display: flex; //justify-content: center; //align-items: flex-start; //height: 450px;
 }
 
 

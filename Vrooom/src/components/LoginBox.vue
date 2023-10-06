@@ -1,7 +1,7 @@
 <script>
 
 export default {
-  data(){
+  data() {
     return {
       formState: {
         username: '',
@@ -40,7 +40,7 @@ export default {
             name="username"
             :rules="[{ required: true, message: 'Please input your username!' }]"
         >
-          <a-input v-model:value="formState.username" />
+          <a-input v-model:value="formState.username"/>
         </a-form-item>
 
         <a-form-item
@@ -48,7 +48,7 @@ export default {
             name="password"
             :rules="[{ required: true, message: 'Please input your password!' }]"
         >
-          <a-input-password v-model:value="formState.password" />
+          <a-input-password v-model:value="formState.password"/>
         </a-form-item>
 
         <a-form-item name="remember" :wrapper-col="{ offset: 8, span: 16 }">
@@ -60,11 +60,11 @@ export default {
           <a-button type="link" html-type="submit">Login</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button to="/signup" type="link">Create Account</a-button>
 
+          <router-link to="/signup">
+            <a-button type="link">Create Account</a-button>
+          </router-link>
 
-          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <router-link to="/signup">Create Account</router-link>
         </a-form-item>
 
 
@@ -82,11 +82,11 @@ export default {
   flex: 0 0 auto;
 }
 
-.ant-btn{
+.ant-btn {
   padding: 0 5px;
   font-size: 18px;
   color: black;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 

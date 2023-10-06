@@ -1,10 +1,7 @@
 <script>
-
-
 import VehiclesService from "@/services/VehiclesService";
-
 export default {
-  data(){
+  data() {
     return {
       formState: {
         username: '',
@@ -13,12 +10,12 @@ export default {
       },
       visible: false,
     }
-  },methods:{
-    lookAt(type){
+  }, methods: {
+    lookAt(type) {
       console.log(type)
       this.$router.push({
-        path:'/vehicles',
-        query:{type:type}
+        path: '/vehicles',
+        query: {type: type}
       })
     },
     // getVehicles(){
@@ -55,7 +52,7 @@ export default {
           <a-button type="link" @click="lookAt('utility')">Utility</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link" >All</a-button>
+          <a-button type="link">All</a-button>
         </a-form-item>
 
 
@@ -73,17 +70,18 @@ export default {
   flex: 0 0 auto;
 }
 
-.ant-btn{
+.ant-btn {
   padding: 0 5px;
   font-size: 18px;
   color: black;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 p {
   margin: 10px 10px 20px 10px;
   font-size: 18px;
-  font-family: Inter,sans-serif;}
+  font-family: Inter, sans-serif;
+}
 
 </style>
 
