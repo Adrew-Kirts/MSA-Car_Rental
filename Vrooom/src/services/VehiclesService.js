@@ -3,11 +3,16 @@ import axios from 'axios';
 const VEHICLE_API_URL = import.meta.env.VITE_VEHICLE_BASE_URL
 
 class VehiclesService{
-    getVehicles(quickstart){
-        if(!quickstart.isEmpty){
+    getVehicles(query){
+        console.log(Object.keys(query).length)
+        if(query.isEmpty) {
+
             return axios.get(VEHICLE_API_URL);
+        }else if (Object.keys(query).length === 1){
+
+            return axios.get(VEHICLE_API_URL+"?type="+query.type)
         }else{
-            return axios.get(VEHICLE_API_URL+"available?type="+quickstart.type+"&startDate="+quickstart.startDate+"&endDate="+quickstart.endDate)
+            return axios.get(VEHICLE_API_URL+"available?type="+query.type+"&startDate="+query.startDate+"&endDate="+query.endDate)
         }
 
     }

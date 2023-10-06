@@ -1,6 +1,8 @@
 <script>
 
 
+import VehiclesService from "@/services/VehiclesService";
+
 export default {
   data(){
     return {
@@ -11,6 +13,18 @@ export default {
       },
       visible: false,
     }
+  },methods:{
+    lookAt(type){
+      console.log(type)
+      this.$router.push({
+        path:'/vehicles',
+        query:{type:type}
+      })
+    },
+    // getVehicles(){
+    //   VehiclesService.getVehicles(this.$route.query)
+    //       .then((response)=>this.Vehicles = response.data)
+    // },
   }
 }
 
@@ -32,13 +46,16 @@ export default {
         <p>Select your vehicle type: </p>
         <a-form-item :wrapper-col="{ offset: 1, span: 20 }">
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">Car</a-button>
+          <a-button type="link" @click="lookAt('car')">Car</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">Motorcycle</a-button>
+          <a-button type="link" @click="lookAt('motorcycle')">Motorcycle</a-button>
           <br>
           <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
-          <a-button type="link">Utility</a-button>
+          <a-button type="link" @click="lookAt('utility')">Utility</a-button>
+          <br>
+          <img alt="logo" src="@/assets/logo.svg" style="width: 15px; height: 15px; transform: rotate(270deg);">
+          <a-button type="link" >All</a-button>
         </a-form-item>
 
 

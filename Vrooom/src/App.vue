@@ -5,7 +5,6 @@ import QuickStart from './components/QuickStart.vue'
 </script>
 
 <template>
-  <body>
   <header>
 <!--    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />-->
 
@@ -19,27 +18,27 @@ import QuickStart from './components/QuickStart.vue'
   </header>
 
   <RouterView />
-  </body>
 </template>
 
 <style scoped>
 
 header {
-  line-height: 1.5;
-  max-height: 100vh;
+  /*line-height: 1.5;
+  max-height: 100vh;*/
+  text-align: center;
 }
 
-.logo {
+/*.logo {
   display: block;
   margin: 0 auto 2rem;
-}
+}*/
 
-nav {
+/*nav {
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
-}
+}*/
 
 nav a.router-link-exact-active {
   color: var(--color-text);
@@ -59,7 +58,7 @@ nav a:first-of-type {
   border: 0;
 }
 
-@media (min-width: 1024px) {
+/*@media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
@@ -85,11 +84,5 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 
-  body {
-    background-image: url('@/assets/sunset_jam.JPG'); /* Update the path to your image */
-    background-size: cover;
-    background-position: center;
-  }
-
-}
+}*/
 </style>
